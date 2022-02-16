@@ -1,0 +1,25 @@
+{
+  "name": "blueline-image",
+  "version": "0.1.0",
+  "description": "Generates blueline images",
+  "license": "GPL-2.0+",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bobwallis/BluelineImage.git"
+  },
+  "scripts": {
+    "start": "serverless offline start --dontPrintOutput",
+    "deploy": "sls deploy",
+    "deploy:function": "sls deploy function --function png --verbose"
+  },
+  "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
+    "puppeteer-core": "^13.3.2"
+  },
+  "devDependencies": {
+    "puppeteer": "^13.3.2",
+    "serverless": "^3.2.1",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-offline": "^8.4.0"
+  }
+}
