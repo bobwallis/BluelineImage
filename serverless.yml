@@ -2,28 +2,25 @@ service: blueline-image
 
 provider:
   name: aws
-  region: eu-west-1
-  stage: prod
-  runtime: nodejs14.x
-  memorySize: 3072
+  deploymentMethod: direct
+  region: eu-west-2
+  runtime: nodejs16.x
+  memorySize: 3008
   timeout: 10
+  stackTags:
+    project: "project blueline"
 
 functions:
   png:
     handler: src/index.handler
     events:
-    - http:
-        path: /
-        method: get
+      - http: 'GET /'
 
 plugins:
   - serverless-apigw-binary
-  - serverless-offline
+  - serverless-plugin-resource-tagging
 
 custom:
-  serverless-offline:
-    port: 4000
-    noTimeout: true
   apigwBinary:
     types:
     - '*/*'
