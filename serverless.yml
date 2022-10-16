@@ -8,7 +8,7 @@ provider:
   memorySize: 3008
   timeout: 10
   stackTags:
-    project: "project blueline"
+    project: "blueline"
 
 functions:
   png:
