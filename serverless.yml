@@ -1,11 +1,13 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: bobwallis
 service: blueline-image
 
 provider:
   name: aws
   deploymentMethod: direct
   region: eu-west-2
-  runtime: nodejs16.x
-  memorySize: 3008
+  runtime: nodejs20.x
+  memorySize: 1536
   timeout: 10
   stackTags:
     project: "blueline"

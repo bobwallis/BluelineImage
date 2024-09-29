@@ -12,11 +12,11 @@
     "deploy:function": "serverless deploy function --function png --verbose"
   },
   "dependencies": {
-    "@sparticuz/chromium": "^107",
-    "puppeteer-core": "^18.1.0"
+    "@sparticuz/chromium": "^127.0.0",
+    "puppeteer-core": "^23.1.1"
   },
   "devDependencies": {
-    "serverless": "^3.23.0",
+    "serverless": "^4.4.3",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-plugin-resource-tagging": "^1.2.0"
   }
