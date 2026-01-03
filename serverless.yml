@@ -6,8 +6,8 @@ provider:
   name: aws
   deploymentMethod: direct
   region: eu-west-2
-  runtime: nodejs20.x
-  memorySize: 1536
+  runtime: nodejs24.x
+  memorySize: 1024
   timeout: 10
   stackTags:
     project: "blueline"
@@ -15,6 +15,7 @@ provider:
 functions:
   png:
     handler: src/index.handler
+    reservedConcurrency: 3
     events:
       - http: 'GET /'
 
