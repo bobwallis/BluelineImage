@@ -11,6 +11,9 @@ module.exports = {
       const { url = '', scale = 2, style = 'line' } = params;
       const container = (style === 'grid')? 'grid' : 'line';
 
+      // Extract filename from URL
+      const filename = url.split('/').pop() + '.png';
+
       // Check for valid URL
       if( !url || !url.startsWith( 'https://rsw.me.uk/blueline/methods/view' ) ) {
         return {
@@ -100,6 +103,7 @@ module.exports = {
         isBase64Encoded: true,
         headers: {
           'Content-Type': 'image/png',
+          'Content-Disposition': `inline; filename="${filename}"`,
           'Cache-Control': 'public, max-age=604800'
         }
       };
