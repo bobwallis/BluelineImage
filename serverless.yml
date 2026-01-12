@@ -4,26 +4,23 @@ service: blueline-image
 
 provider:
   name: aws
-  deploymentMethod: direct
   region: eu-west-2
   runtime: nodejs24.x
-  memorySize: 1024
-  timeout: 10
+  memorySize: 630
+  timeout: 15
   stackTags:
     project: "blueline"
+  tags:
+    project: "blueline"
+  httpApi:
+    useProviderTags: true
+    cors:
+      allowedOrigins:
+        - https://rsw.me.uk
 
 functions:
   png:
     handler: src/index.handler
     reservedConcurrency: 3
     events:
-      - http: 'GET /'
-
-plugins:
-  - serverless-apigw-binary
-  - serverless-plugin-resource-tagging
-
-custom:
-  apigwBinary:
-    types:
-    - '*/*'
+      - httpApi: 'GET /'
