@@ -33,6 +33,18 @@ module.exports = {
 
       // Navigate to page
       const page = await browser.newPage();
+
+      // Block unnecessary resources to speed up loading
+      await page.setRequestInterception( true );
+      page.on( 'request', (req) => {
+        const resourceType = req.resourceType();
+        if( ['image', 'media'].includes( resourceType ) ) {
+          req.abort();
+        } else {
+          req.continue();
+        }
+      });
+
       page.setViewport( { width: 5000, height: 1200, deviceScaleFactor: Number( scale ) } );
       await page.goto( url, { waitUntil: 'load' } );
 
@@ -104,11 +116,12 @@ module.exports = {
         headers: {
           'Content-Type': 'image/png',
           'Content-Disposition': `inline; filename="${filename}"`,
-          'Cache-Control': 'public, max-age=604800'
+          'Cache-Control': 'public, max-age=604800, s-maxage=604800'
         }
       };
     }
     catch( e ) {
+      if( browser ) await browser.close();
       throw new Error( e.message );
     }
   }
