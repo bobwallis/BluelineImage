@@ -1,3 +1,5 @@
+This repository is archived. Functionality is now included directly in the Blueline application.
+
 # Blueline Image Generator
 This is an AWS Lambda function that generates images of bellringing methods by
 taking screenshots of https://rsw.me.uk/blueline/ using a headless web browser.
